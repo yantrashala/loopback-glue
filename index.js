@@ -42,7 +42,7 @@ module.exports = function glueLoopBackApps(app, options, callback) {
 				cb(err,null);
 			}
 			instance = start.call(this);
-      cb(null,instance);
+      		cb && cb(null,instance);
 		});
 	};
 

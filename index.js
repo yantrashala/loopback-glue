@@ -41,8 +41,9 @@ module.exports = function glueLoopBackApps(app, options, callback) {
 				console.log('Error with loading configuration');
 				cb(err,null);
 			}
-			instance = start.call(this);
-      		cb && cb(null,instance);
+			instance = start.call(this,function(err){
+				cb && cb(null,instance);
+			});
 		});
 	};
 

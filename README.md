@@ -18,11 +18,11 @@ To use the module:
     var options = {
       "appRootDir" : __dirname,
       "subapps" : [
-        { 
+        {
           "name-api" : {
             "loadModels" : true,
             "loadDatasources" : true
-          } 
+          }
         } , {
           "address-api" : {
             "loadModels" : true,
@@ -40,7 +40,7 @@ To use the module:
     // Sub-apps like REST API are mounted via boot scripts.
     glue(app, options, function(err,instructions) {
       if (err) throw err;
-    
+
       // start the server if $ node server.js
       if (require.main === module)
         app.start();
@@ -48,21 +48,25 @@ To use the module:
         // in case its not the parent app, exporting instructions to load from parent
         app.glue = {'instructions' : instructions, glueOption : options};
       }
-       
+
     });
     ```
 
- 
+
  Roadmap
  --------------------------
- - [ ] Test coverage
- 
+ - Improve documentation
+ - Code clean up
+ - Unit Test
+ - Loading models and datasources based on usage from model.json and datasources.json
+ - Test coverage
+
  See Also
  --------------------------
- 
+
  - [Loopback][loopback]
  - [Loopback-boot][loopback-boot]
- 
+
  [option]: https://apidocs.strongloop.com/loopback-boot/
  [loopback-boot]: https://apidocs.strongloop.com/loopback-boot/
  [loopback]: http://loopback.io

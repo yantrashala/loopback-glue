@@ -1,6 +1,6 @@
 {
   "name": "loopback-glue",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Booting utility to glue multiple loopback projects together",
   "main": "index.js",
   "scripts": {},
@@ -12,6 +12,7 @@
   "dependencies": {
     "loopback": "^2.26.2",
     "loopback-boot": "^2.16.0",
-    "loopback-datasource-juggler": "^2.44.0"
+    "loopback-datasource-juggler": "^2.44.0",
+    "toposort": "^0.2.12"
   }
 }

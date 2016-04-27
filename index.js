@@ -3,6 +3,7 @@
 var boot = require('loopback-boot');
 var compile = boot.compile;
 var execute = boot.execute;
+var toposort = require('toposort');
 
 module.exports = function glueLoopBackApps(app, options, callback) {
 
@@ -29,6 +30,8 @@ module.exports = function glueLoopBackApps(app, options, callback) {
 			}
 		});
 	}
+
+	instructions.models = sortByInheritance(instructions.models);
 
 	options.env = options.env || app.get('env');
 
@@ -125,3 +128,36 @@ var getUpdatedDSConfig = exports.getUpdatedDSConfig = function(config, datasourc
 		})
 	});
 };
+
+function sortByInheritance(instructions) {
+  // create edges Base name -> Model name
+  var edges = instructions
+    .map(function(inst) {
+      return [getBaseModelName(inst.definition), inst.name];
+    });
+
+  var sortedNames = toposort(edges);
+
+  var instructionsByModelName = {};
+  instructions.forEach(function(inst) {
+    instructionsByModelName[inst.name] = inst;
+  });
+
+  return sortedNames
+    // convert to instructions
+    .map(function(name) {
+      return instructionsByModelName[name];
+    })
+    // remove built-in models
+    .filter(function(inst) {
+      return !!inst;
+    });
+}
+
+function getBaseModelName(modelDefinition) {
+  if (!modelDefinition)
+    return undefined;
+
+  return modelDefinition.base ||
+    modelDefinition.options && modelDefinition.options.base;
+}

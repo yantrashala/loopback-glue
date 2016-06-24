@@ -96,19 +96,7 @@ var mergeDataSources = exports.mergeDataSources = function(instructions, subAppI
 			instructions.dataSources[dsName] = subAppInstructions.dataSources[dsName];
 			console.log('Adding dataSources from sub app: ',dsName);
 		} else {
-            (function mergeKeys(destination, source) {
-                Object.keys(source).forEach(function(key) {
-                    if(!destination.hasOwnProperty(key)) {
-                        destination[key] = source[key];
-                    } else {
-                        if(typeof destination[key] === 'object' && typeof source[key] === 'object') {
-                            mergeKeys(destination[key], source[key]);
-                        } else {
-                            console.warn('could not merge %s for %s. Leaving destination values.', key, dsName);
-                        }
-                    }
-                });
-            })(instructions.dataSources[dsName], subAppInstructions.dataSources[dsName]);
+            mergeKeys(instructions.dataSources[dsName], subAppInstructions.dataSources[dsName]);
         }
 	});
 };
@@ -174,4 +162,18 @@ function getBaseModelName(modelDefinition) {
 
   return modelDefinition.base ||
     modelDefinition.options && modelDefinition.options.base;
+}
+
+function mergeKeys(destination, source) {
+    Object.keys(source).forEach(function (key) {
+        if (!destination.hasOwnProperty(key)) {
+            destination[key] = source[key];
+        } else {
+            if (typeof destination[key] === 'object' && typeof source[key] === 'object') {
+                mergeKeys(destination[key], source[key]);
+            } else {
+                console.warn('could not merge %s for %s. Leaving destination values.', key, dsName);
+            }
+        }
+    });
 }

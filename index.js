@@ -95,6 +95,8 @@ var mergeDataSources = exports.mergeDataSources = function(instructions, subAppI
 		if(!instructions.dataSources.hasOwnProperty(dsName)) {
 			instructions.dataSources[dsName] = subAppInstructions.dataSources[dsName];
 			console.log('Adding dataSources from sub app: ',dsName);
+		} else {
+			mergeKeys(instructions.dataSources[dsName], subAppInstructions.dataSources[dsName]);
 		}
 	});
 };
@@ -160,4 +162,18 @@ function getBaseModelName(modelDefinition) {
 
   return modelDefinition.base ||
     modelDefinition.options && modelDefinition.options.base;
+}
+
+function mergeKeys(destination, source) {
+	Object.keys(source).forEach(function (key) {
+		if (!destination.hasOwnProperty(key)) {
+			destination[key] = source[key];
+		} else {
+			if (typeof destination[key] === 'object' && typeof source[key] === 'object') {
+				mergeKeys(destination[key], source[key]);
+			} else {
+				console.warn('Leaving destination values for %s for %s.', key, dsName);
+			}
+		}
+	});
 }

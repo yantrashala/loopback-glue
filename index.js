@@ -97,7 +97,7 @@ var mergeDataSources = exports.mergeDataSources = function(instructions, subAppI
 			console.log('Adding dataSources from sub app: ',dsName);
 		} else {
 			mergeKeys(instructions.dataSources[dsName], subAppInstructions.dataSources[dsName]);
-        }
+		}
 	});
 };
 

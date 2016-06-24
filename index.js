@@ -172,7 +172,7 @@ function mergeKeys(destination, source) {
 			if (typeof destination[key] === 'object' && typeof source[key] === 'object') {
 				mergeKeys(destination[key], source[key]);
 			} else {
-				console.warn('could not merge %s for %s. Leaving destination values.', key, dsName);
+				console.warn('Leaving destination values for %s for %s.', key, dsName);
 			}
 		}
 	});

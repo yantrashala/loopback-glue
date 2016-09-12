@@ -10,9 +10,10 @@
     "url": "https://github.com/yantrashala/loopback-glue"
   },
   "dependencies": {
+    "chai": "^3.5.0",
     "loopback": "^2.26.2",
-    "loopback-boot": "^2.16.0",
     "loopback-datasource-juggler": "^2.44.0",
+    "supertest": "^2.0.0",
     "toposort": "^0.2.12"
   }
 }

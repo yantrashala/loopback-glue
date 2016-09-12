@@ -1,11 +1,32 @@
+global.STRONGLOOP_GLB = null;
+var index = 1;
+var explorer = require('loopback-component-explorer');
 var v1 = require('./index-v1');
-var v2 = require('./index-v2');
-
+var boot = require('loopback-boot');
 module.exports = function glue(app, options, callback) {
 
   if( options.subApps ) {
     //consider v2
-    v2(app, options, callback);
+    boot(app, options.appRootDir, function(err) {
+      glueSubApps(app, options, callback);
+    });
+
+    function glueSubApps(app, options, callback) {
+      options.subApps && options.subApps.map(function(childAppOptions) {
+        if(!childAppOptions.exclude) {
+          var childApp = require(childAppOptions.name);
+          var prefix = childAppOptions.gluePrefix || childApp.get('gluePrefix') || "/api"+index++;
+          var explorerPath = "/explorer";
+          app.use(prefix, childApp);
+          console.log("Mounting subapp ("+childAppOptions.name+") at " +prefix+ "\nExplorer at " + prefix + explorerPath);
+          explorer(childApp, {
+            basePath: prefix+childApp.get('restApiRoot'),
+            mountPath: explorerPath
+          })
+        }
+      })
+      callback();
+    }
   } else {
     //consider v1
     v1(app, options, callback);

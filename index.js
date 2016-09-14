@@ -1,18 +1,19 @@
 global.STRONGLOOP_GLB = null;
 var index = 1;
 var explorer = require('loopback-component-explorer');
-var v1 = require('./index-v1');
+var v1 = require('./ov');
 var boot = require('loopback-boot');
 module.exports = function glue(app, options, callback) {
 
-  if( options.subApps ) {
+
+  if( options.subapps && options.subapps[0].name ) {
     //consider v2
     boot(app, options.appRootDir, function(err) {
       glueSubApps(app, options, callback);
     });
 
     function glueSubApps(app, options, callback) {
-      options.subApps && options.subApps.map(function(childAppOptions) {
+      options.subapps && options.subapps.map(function(childAppOptions) {
         if(!childAppOptions.exclude) {
           var childApp = require(childAppOptions.name);
           var prefix = childAppOptions.gluePrefix || childApp.get('gluePrefix') || "/api"+index++;

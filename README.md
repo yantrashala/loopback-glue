@@ -19,15 +19,9 @@ To use the module:
       "appRootDir" : __dirname,
       "subapps" : [
         {
-          "name-api" : {
-            "loadModels" : true,
-            "loadDatasources" : true
-          }
-        } , {
-          "address-api" : {
-            "loadModels" : true,
-            "loadDatasources" : false
-          }
+          "name" : "app-name",
+          "gluePrefix" : "api1", //this prefix will be added to the childApp Url's
+          "exclude" : true/false
         }
       ]
     };
@@ -44,10 +38,6 @@ To use the module:
       // start the server if $ node server.js
       if (require.main === module)
         app.start();
-      else {
-        // in case its not the parent app, exporting instructions to load from parent
-        app.glue = {'instructions' : instructions, glueOption : options};
-      }
 
     });
     ```
@@ -56,8 +46,6 @@ To use the module:
  Roadmap
  --------------------------
  - Improve documentation
- - Code clean up
- - Unit Test
  - Loading models and datasources based on usage from model.json and datasources.json
  - Test coverage
 

@@ -3,7 +3,10 @@
   "version": "0.2.1",
   "description": "Booting utility to glue multiple loopback projects together",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "mocha",
+    "coverage": "istanbul cover _mocha"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",

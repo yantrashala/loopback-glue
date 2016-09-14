@@ -12,7 +12,7 @@ To use the module:
 
 2. Create an options object for glue. The option object inherits the loopback-boot [option][Option] object. On top of the original option object we are adding a new attribute called subapps.
 
-    The "subapps" attribute is an array of glue based [loopback] projects. Each element of the array should have the loopback project name as the key, followed by the value as the glue option flags.
+    The "subapps" attribute is an array of glue based [loopback] projects. Each element of the array should have the loopback project name, prefix.
 
     ```js
     var options = {
@@ -21,7 +21,7 @@ To use the module:
         {
           "name" : "app-name",
           "gluePrefix" : "api1", //this prefix will be added to the childApp Url's
-          "exclude" : true/false
+          "exclude" : true/false //[optional]
         }
       ]
     };

@@ -19,7 +19,7 @@ module.exports = function glue(app, options, callback) {
           var prefix = childAppOptions.gluePrefix || childApp.get('gluePrefix') || "/api"+index++;
           var explorerPath = "/explorer";
           app.use(prefix, childApp);
-          console.log("Mounting subapp ("+childAppOptions.name+") at " +prefix+ "\nExplorer at " + prefix + explorerPath);
+          //console.log("Mounting subapp ("+childAppOptions.name+") at " +prefix+ "\nExplorer at " + prefix + explorerPath);
           explorer(childApp, {
             basePath: prefix+childApp.get('restApiRoot'),
             mountPath: explorerPath

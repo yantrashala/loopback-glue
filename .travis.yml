@@ -1,0 +1,14 @@
+language: node_js
+env:
+
+node_js:
+  - "6"
+  - "5"
+  - "4"
+  - "0.12"
+
+after_success:
+  - npm run coverage
+  - codecov
+  - cat ./coverage/lcov.info | coveralls
+  - bash <(curl -s https://codecov.io/bash)

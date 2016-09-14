@@ -19,16 +19,6 @@ app.start = function() {
 
 var options = {
   appRootDir: __dirname,
-  subapps: [{
-    name: "child1",
-    "gluePrefix": "/child1",
-    app: require("../../subApps/child1")
-  },
-  {
-    name: "child2",
-    "gluePrefix": "/child2",
-    app: require("../../subApps/child2")
-  }]
 }
 glue(app, options, function(err) {
     if(err) throw err;

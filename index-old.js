@@ -18,15 +18,13 @@ module.exports = function glueLoopBackApps(app, options, callback) {
 
 	if(options.subapps && Array.isArray(options.subapps)) {
 		options.subapps.forEach(function (subapp) {
-			//console.log(subapp);
-
 			try {
 				var moduleName = Object.keys(subapp)[0];
 				var moduleOption = subapp[moduleName];
-				var moduleObj = require(moduleName);
+				var moduleObj = moduleOption.app || require(moduleName);
 				mergeInstructions(instructions, moduleObj.glue.instructions,moduleOption);
 			} catch (e) {
-				console.log('error=',e.stack);
+				//console.log('error=',e.stack);
 			}
 		});
 	}

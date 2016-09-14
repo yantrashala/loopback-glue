@@ -1,11 +1,32 @@
 var chai = require('chai');
-var expect = chai.assert;
+var expect = chai.expect;
 var app = require('./glueTest/server/server');
 var supertest = require('supertest');
 var api = supertest.agent(app);
 
-describe('Server status checks', function() {
-console.log(api)
+describe('Check glue module by passing options in all possible ways', function() {
+
+  it('Check if options doesnt contain any subapps', function(done) {
+    expect(function() {
+      require('./NT1/server/server')
+    }).to.throw(Error);
+    done();
+  })
+
+  it('Check if options provided are old implementation', function(done) {
+    var oldApp = require('./OT/server/server');
+    expect(oldApp.glue.instructions).to.exist;
+    expect(oldApp.glue.glueOption).to.exist;
+     done();
+  })
+
+  it('Check if subapps are empty', function(done) {
+    expect(function() {
+      require('./NT2/server/server')
+    }).to.throw(Error);
+    done();
+  })
+
   it('Check for parent server status', function(done) {
     api.get('/').expect(200, done);
   });

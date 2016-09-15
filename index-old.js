@@ -24,7 +24,7 @@ module.exports = function glueLoopBackApps(app, options, callback) {
 				var moduleObj = moduleOption.app || require(moduleName);
 				mergeInstructions(instructions, moduleObj.glue.instructions,moduleOption);
 			} catch (e) {
-				//console.log('error=',e.stack);
+				console.log('error=',e.stack);
 			}
 		});
 	}

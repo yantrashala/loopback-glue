@@ -1,6 +1,6 @@
 var loopback = require('loopback');
 //var boot = require('loopback-boot');
-var glue = require('loopback-glue');
+var glue = require('../../../../../index');
 var app = module.exports = loopback();
 
 app.start = function() {

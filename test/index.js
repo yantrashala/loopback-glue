@@ -6,7 +6,7 @@ var api = supertest.agent(app);
 
 describe('Check glue module by passing options in all possible ways', function() {
 
-  it('Check if options doesnt contain any subapps', function(done) {
+  it('Check if options doesnt contain appRootDir', function(done) {
     expect(function() {
       require('./NT1/server/server')
     }).to.throw(Error);
@@ -21,9 +21,9 @@ describe('Check glue module by passing options in all possible ways', function()
   })
 
   it('Check if subapps are empty', function(done) {
-    expect(function() {
-      require('./NT2/server/server')
-    }).to.throw(Error);
+    var oldImp = require('./NT2/server/server');
+    expect(oldImp.glue.instructions).to.exist;
+    expect(oldImp.glue.glueOption).to.exist;
     done();
   })
 

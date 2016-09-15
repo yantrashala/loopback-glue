@@ -21,11 +21,14 @@ var options = {
   appRootDir: __dirname,
   subapps: []
 }
-glue(app, options, function(err) {
+glue(app, options, function(err, instructions) {
     if(err) throw err;
 
     if(require.main === module)
       app.start();
+    else {
+      app.glue = {'instructions' : instructions, glueOption : options};
+    }
 })
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.

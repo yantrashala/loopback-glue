@@ -1,6 +1,6 @@
 language: node_js
 env:
-
+- CODECOV_TOKEN="b2c5ff6b-5b47-40b0-aabd-59d2e4c10308"
 node_js:
   - "6"
   - "5"

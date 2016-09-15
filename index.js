@@ -4,6 +4,7 @@ var oldImplementation = require('./index-old');
 var boot = require('loopback-boot');
 module.exports = function glue(app, options, callback) {
 
+if(options.appRootDir) {
   if( options.subapps && options.subapps.length>0 ) {
     var current = true,old = true;
     options.subapps.map(function(ca) {
@@ -47,7 +48,10 @@ module.exports = function glue(app, options, callback) {
     }
   }
   else {
-    throw new Error("Please provide valid options.")
+    oldImplementation(app, options, callback);
   }
+} else {
+  throw new Error("Please provide valid options.")
+}
 
 }

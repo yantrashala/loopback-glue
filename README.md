@@ -1,4 +1,7 @@
 # loopback-glue
+----------------
+
+ [![Build status](https://img.shields.io/travis/yantrashala/loopback-glue/master.svg?branch=v1.0.0)](https://api.travis-ci.org/yantrashala/loopback-glue.svg?branch=v1.0.0) [![codecov](https://codecov.io/gh/yantrashala/gulp-loopback-swagger-validator/branch/v1.0.0/graph/badge.svg)](https://codecov.io/gh/yantrashala/gulp-loopback-swagger-validator)
 
 Booting utility to glue multiple loopback projects together
 

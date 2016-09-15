@@ -24,13 +24,13 @@ var options = {
       "sample1" : {
         "loadModels" : true,
         "loadDatasources" : true,
-        "app": "../subapps/sample1/server/server"
+        "app": require("../subapps/sample1/server/server")
       }
     } , {
       "sample2" : {
         "loadModels" : true,
         "loadDatasources" : true,
-        "app": "../subapps/sample2/server/server"
+        "app": require("../subapps/sample2/server/server")
       }
     }
   ]
@@ -40,12 +40,12 @@ glue(app, options, function(err,instructions) {
   if (err) throw err;
 
   // start the server if $ node server.js
-  if (require.main === module)
+  //if (require.main === module)
     app.start();
-  else {
+  //else {
     // in case its not the parent app, exporting instructions to load from parent
     app.glue = {'instructions' : instructions, glueOption : options};
-  }
+  //}
 
 });
 

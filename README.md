@@ -32,7 +32,9 @@ To use the module:
     ```
     
   app - You can specify an app object by require when the subapp is located in a different location, if you dont specify app then glue will search a loopback project in the node-modules.
+  
   gluePrefix - You can specify the path where the subapp could be mounted on, if you dont specify a path glue considers api with an index (ie. api1, api2) as the path to mount.
+  
   exclude - You can exlude a subapp with this flag.
 
 3. Replace boot loading by the following code:

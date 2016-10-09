@@ -23,17 +23,21 @@ To use the module:
       "subapps" : [
         {
           "name" : "app-name",
+          "app" : [loopback-app-object], [optional]
           "gluePrefix" : "api1", //this prefix will be added to the childApp Url's
           "exclude" : true/false //[optional]
         }
       ]
     };
     ```
+    
+  app - You can specify an app object by require when the subapp is located in a different location, if you dont specify app then glue will search a loopback project in the node-modules.
+  gluePrefix - You can specify the path where the subapp could be mounted on, if you dont specify a path glue considers api with an index (ie. api1, api2) as the path to mount.
+  exclude - You can exlude a subapp with this flag.
 
 3. Replace boot loading by the following code:
 
     ```javascript
-    // Bootstrap the application, configure models, datasources and middleware.
     // Sub-apps like REST API are mounted via boot scripts.
     glue(app, options, function(err,instructions) {
       if (err) throw err;
@@ -45,19 +49,17 @@ To use the module:
     });
     ```
 
+4. Example
+ [loopback-glue-example]
 
- Roadmap
- --------------------------
- - Improve documentation
- - Loading models and datasources based on usage from model.json and datasources.json
- - Test coverage
 
- See Also
- --------------------------
+See Also
+--------------------------
 
- - [Loopback][loopback]
- - [Loopback-boot][loopback-boot]
+- [Loopback][loopback]
+- [Loopback-boot][loopback-boot]
 
- [option]: https://apidocs.strongloop.com/loopback-boot/
- [loopback-boot]: https://apidocs.strongloop.com/loopback-boot/
- [loopback]: http://loopback.io
+[option]: https://apidocs.strongloop.com/loopback-boot/
+[loopback-boot]: https://apidocs.strongloop.com/loopback-boot/
+[loopback]: http://loopback.io
+[loopback-glue-example]: https://github.com/yantrashala/loopback-glue-example

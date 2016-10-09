@@ -32,26 +32,26 @@ describe('Check glue module by passing options in all possible ways', function()
   });
 
   it('Check for child api status', function(done) {
-    api.get('/child1').expect(200, done);
+    api.get('/api1').expect(200, done);
   });
 
   it('Check for child api status', function(done) {
-    api.get('/child2').expect(200, done);
+    api.get('/api2').expect(200, done);
   });
 
   it('Check for child api status', function(done) {
-    api.get('/child1/explorer/').expect(200, done);
+    api.get('/api1/explorer/').expect(200, done);
   });
 
   it('Check for child api status', function(done) {
-    api.get('/child2/explorer/').expect(200, done);
+    api.get('/api2/explorer/').expect(200, done);
   });
 
   it('Check for child api response', function(done) {
     var body = {
                   "greeting": "Sender says hello to receiver"
                 };
-    api.get('/child1/Messages/greet?msg=hello').expect(200, body, done);
+    api.get('/api1/Messages/greet?msg=hello').expect(200, body, done);
   });
 
 });

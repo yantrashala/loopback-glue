@@ -1,4 +1,9 @@
 {
+  "initial:before": {
+    "loopback#favicon": {},
+    "./middleware/sampleMiddleware": {
+    }
+  },
   "routes": {
     "loopback#rest": {
       "paths": ["${restApiRoot}"]

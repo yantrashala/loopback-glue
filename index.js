@@ -14,8 +14,8 @@ if(options.appRootDir) {
     })
 
     if(current) {
-      boot(app, options.appRootDir, function(err) {
-        glueSubApps(app, options, callback);
+      glueSubApps(app, options, function() {
+          boot(app, options.appRootDir, callback);
       });
     } else {
       oldImplementation(app, options, callback);
@@ -28,6 +28,7 @@ if(options.appRootDir) {
           var prefix = childAppOptions.gluePrefix || childApp.get('gluePrefix') || "/api"+index++;
           app.use(prefix, childApp);
           console.log("Mounting subapp ("+childAppOptions.name+") at " +prefix);
+          childApp.lazyrouter();
           var stack = childApp._router.stack;
           stack.forEach(removeAttachedExplorer);
           function removeAttachedExplorer(route, i, routes) {

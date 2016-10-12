@@ -1,7 +1,12 @@
 # loopback-glue
 ----------------
 
+[![NPM](https://nodei.co/npm/loopback-glue.png?downloads=true)](https://nodei.co/npm/loopback-glue/)
+
+ [![NPM](https://nodei.co/npm-dl/loopback-glue.png?months=3&height=3)](https://nodei.co/npm/loopback-glue/)
+ 
  [![Build status](https://api.travis-ci.org/yantrashala/loopback-glue.svg?branch=v1.0.0)](https://api.travis-ci.org/yantrashala/loopback-glue.svg?branch=v1.0.0) [![codecov](https://codecov.io/gh/yantrashala/loopback-glue/branch/v1.0.0/graph/badge.svg)](https://codecov.io/gh/yantrashala/loopback-glue)
+
 
 Booting utility to glue multiple loopback projects together
 

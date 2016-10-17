@@ -7,6 +7,16 @@
  
  [![Build status](https://api.travis-ci.org/yantrashala/loopback-glue.svg?branch=v1.0.0)](https://api.travis-ci.org/yantrashala/loopback-glue.svg?branch=v1.0.0) [![codecov](https://codecov.io/gh/yantrashala/loopback-glue/branch/v1.0.0/graph/badge.svg)](https://codecov.io/gh/yantrashala/loopback-glue)
 
+Note loopback-glue has upgraded to v1.0.0, Please find the old implementation details here [loopback-glue-Old-Implementation]
+
+Whats New!
+
+ * Your code can be more modularized.
+ * Glue now supports middleware.
+ * You can find examples here [loopback-glue-example].
+ * You can now maintain shared configuration for production deployments.
+ 
+ 
 
 Booting utility to glue multiple loopback projects together
 
@@ -70,3 +80,4 @@ See Also
 [loopback-boot]: https://apidocs.strongloop.com/loopback-boot/
 [loopback]: http://loopback.io
 [loopback-glue-example]: https://github.com/yantrashala/loopback-glue-example
+[loopback-glue-Old-Implementation]: https://github.com/yantrashala/loopback-glue/wiki/ReadMe--0.2.1

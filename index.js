@@ -1,58 +1,29 @@
-var index = 1;
-var explorer = require('loopback-component-explorer');
-var oldImplementation = require('./index-old');
+var option1 = require('./option1');
+var option2 = require('./option2');
 var boot = require('loopback-boot');
+
 module.exports = function glue(app, options, callback) {
 
-if(options.appRootDir) {
-  if( options.subapps && options.subapps.length>0 ) {
-    var current = true,old = true;
-    options.subapps.map(function(ca) {
-      if(!ca.name) {
-        current = false;
+  if (typeof options === 'string') {
+    options = { appRootDir: options };
+  }
+
+  if(options.subapps && Array.isArray(options.subapps)) {
+
+    var option2Flag = true;
+    options.subapps.map(function(childApp) {
+      if(!childApp.name) {
+        option2Flag = false;
       }
-    })
+    });
 
-    if(current) {
-      glueSubApps(app, options, function() {
-          boot(app, options.appRootDir, callback);
-      });
+    if(option2Flag) {
+      option2(app,options,callback);
     } else {
-      oldImplementation(app, options, callback);
+      option1(app,options,callback);
     }
 
-    function glueSubApps(app, options, callback) {
-      options.subapps && options.subapps.map(function(childAppOptions) {
-        if(!childAppOptions.exclude) {
-          var childApp = childAppOptions.app || require(childAppOptions.name);
-          var prefix = childAppOptions.gluePrefix || childApp.get('gluePrefix') || "/api"+index++;
-          app.use(prefix, childApp);
-          console.log("Mounting subapp ("+childAppOptions.name+") at " +prefix);
-          childApp.lazyrouter();
-          var stack = childApp._router.stack;
-          stack.forEach(removeAttachedExplorer);
-          function removeAttachedExplorer(route, i, routes) {
-              if(route && route.name=="router" && route.regexp.toString().indexOf("explorer")>0) {
-                routes.splice(i, 1);
-              }
-          }
-          var childExplorerOptions = childApp.get("loopback-component-explorer");
-          if(childExplorerOptions && childExplorerOptions.mountPath) {
-            explorer(childApp, {
-                basePath: prefix+childApp.get('restApiRoot'),
-                mountPath: childExplorerOptions.mountPath
-            })
-          }
-        }
-      })
-      callback();
-    }
+  } else {
+    boot(app,options,callback);
   }
-  else {
-    oldImplementation(app, options, callback);
-  }
-} else {
-  throw new Error("Please provide valid options.")
-}
-
 }

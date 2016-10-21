@@ -7,6 +7,8 @@
 
  [![Build status](https://img.shields.io/travis/yantrashala/loopback-glue/master.svg?style=flat-square)](https://travis-ci.org/yantrashala/loopback-glue)
 
+ [![Codecov](https://codecov.io/gh/yantrashala/loopback-glue/branch/master/graph/badge.svg)](https://github.com/yantrashala/loopback-glue)
+
  [![David](https://img.shields.io/david/yantrashala/loopback-glue.svg)]()
 
 
@@ -73,6 +75,7 @@ To use the module:
 
     });
     ```
+    
 ### Option 2: Boot all loopback projects independently and then mount them on a new loopback project
 
 To use the module:

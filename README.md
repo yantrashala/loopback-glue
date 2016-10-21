@@ -18,10 +18,10 @@ Booting utility to glue multiple loopback projects together. This module lets yo
 
 There are two ways in which subapps can be merged:
 
-[Option 1](#option-1): Read boot configurations from subapps and merge them as the boot configuration for a new loopback project
+[Option 1](#option-1-read-boot-configurations-from-subapps-and-merge-them-as-the-boot-configuration-for-a-new-loopback-project): Read boot configurations from subapps and merge them as the boot configuration for a new loopback project
     This option is better when you just want to pull models and datasources from subapps. You cant pull and merge middleware or component configuration.
 
-[Option 2](#option-2): Boot all loopback projects independently and then mount them on a new loopback project
+[Option 2](#option-2-boot-all-loopback-projects-independently-and-then-mount-them-on-a-new-loopback-project): Boot all loopback projects independently and then mount them on a new loopback project
     This option is better when you want to maintain request lifecycle separatly for each subapp.
 
 ### Option 1: Read boot configurations from subapps and merge them as the boot configuration for a new loopback project

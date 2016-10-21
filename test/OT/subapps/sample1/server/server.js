@@ -21,6 +21,7 @@ var options = {
 };
 
 glue(app, options, function(err,instructions) {
+
   if (err) throw err;
 
   // start the server if $ node server.js
@@ -29,7 +30,7 @@ glue(app, options, function(err,instructions) {
   else {
     // in case its not the parent app, exporting instructions to load from parent
     app.glue = {'instructions' : instructions, glueOption : options};
-    
+
   }
 
 });

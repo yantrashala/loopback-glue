@@ -4,7 +4,7 @@
   "description": "Booting utility to glue multiple loopback projects together",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "jslint index.js && jslint options2.js && mocha",
     "coverage": "istanbul cover _mocha"
   },
   "license": "MIT",

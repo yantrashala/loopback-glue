@@ -1,6 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
-var app = require('./glueTest/server/server');
+var app = require('./mainTest/server/server');
 var supertest = require('supertest');
 var api = supertest.agent(app);
 

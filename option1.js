@@ -22,6 +22,7 @@ module.exports = function glueLoopBackApps(app, options, callback) {
 				var moduleName = Object.keys(subapp)[0];
 				var moduleOption = subapp[moduleName];
 				var moduleObj = moduleOption.app || require(moduleName);
+				console.log(moduleName)
 				mergeInstructions(instructions, moduleObj.glue.instructions,moduleOption);
 			} catch (e) {
 				console.log('error=',e.stack);

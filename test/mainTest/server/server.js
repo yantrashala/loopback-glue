@@ -1,11 +1,11 @@
 var loopback = require('loopback');
 //var boot = require('loopback-boot');
-//var glue = require('loopback-glue');
 var glue = require('../../../index');
+
 var app = module.exports = loopback();
+
 app.start = function() {
   // start the web server
-  //glue(app, child1, child2);
   return app.listen(function() {
     app.emit('started');
     var baseUrl = app.get('url').replace(/\/$/, '');
@@ -16,6 +16,7 @@ app.start = function() {
     }
   });
 };
+
 
 var options = {
   appRootDir: __dirname,
@@ -28,18 +29,6 @@ var options = {
     app: require("../../subApps/child2")
   }]
 }
-glue(app, options, function(err) {
-    if(err) throw err;
-    //console.log(app._router.stack);
-    if(require.main === module)
-      app.start();
+glue(app, options, function() {
+    app.start();
 })
-// Bootstrap the application, configure models, datasources and middleware.
-// Sub-apps like REST API are mounted via boot scripts.
-// boot(app, __dirname, function(err) {
-//   if (err) throw err;
-//
-//   // start the server if `$ node server.js`
-//   if (require.main === module)
-//     app.start();
-// });

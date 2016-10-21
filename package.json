@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "chai": "^3.5.0",
+    "jslint": "^0.10.3",
     "supertest": "^2.0.0",
     "toposort": "^0.2.12"
   },

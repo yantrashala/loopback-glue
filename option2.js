@@ -26,6 +26,7 @@ module.exports = function glueSubApps(app, options, callback) {
         index = index + 1;
         var childApp = childAppOptions.app || require(childAppOptions.name), prefix = childAppOptions.mountPath || childApp.get('mountPath') || "/api" + index;
         app.use(prefix, childApp);
+        app[childAppOptions.name] = childApp;
         console.log("Mounting subapp (" + childAppOptions.name + ") at " + prefix);
         mountExplorerforChildApp(childApp, prefix);
     });

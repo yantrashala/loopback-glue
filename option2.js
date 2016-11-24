@@ -3,6 +3,7 @@
 var index = 0;
 var explorer = require('loopback-component-explorer');
 var boot = require('loopback-boot');
+var graphIt = require('./graphQlIntegrate');
 
 function mountExplorerforChildApp(childApp, prefix) {
   childApp.lazyrouter();
@@ -22,6 +23,7 @@ function mountExplorerforChildApp(childApp, prefix) {
 }
 
 module.exports = function glueSubApps(app, options, callback) {
+    graphIt(app, options);
     options.subapps.map(function (childAppOptions) {
         index = index + 1;
         var childApp = childAppOptions.app || require(childAppOptions.name), prefix = childAppOptions.mountPath || childApp.get('mountPath') || "/api" + index;

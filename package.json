@@ -14,6 +14,9 @@
   },
   "dependencies": {
     "chai": "^3.5.0",
+    "graphql": "^0.8.2",
+    "graphql-server-express": "^0.4.3",
+    "graphql-tools": "^0.8.3",
     "jslint": "^0.10.3",
     "supertest": "^2.0.0",
     "toposort": "^1.0.0"
